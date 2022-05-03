@@ -42,7 +42,7 @@ export default {
     provide('breakpoint', breakpoint)
 
     onMounted(async () => {
-      function loadJS (options = {}) {
+      function loadScript (options = {}) {
         return new Promise((resolve, reject) => {
           const scriptEle = document.createElement("script")
 
@@ -59,18 +59,11 @@ export default {
 
       function statusChangeCallback (response) { // Called with the results from FB.getLoginStatus().
         console.log('statusChangeCallback')
-        console.log(response) // The current login status of the person.
         if (response.status === 'connected') { // Logged into your webpage and Facebook.
           testAPI()
         } else { // Not logged into your webpage or we are unable to tell.
           console.log(response)
         }
-      }
-
-      function checkLoginState () { // Called when a person is finished with the Login Button.
-        window.FB.getLoginStatus(function (response) { // See the onlogin handler
-          statusChangeCallback(response)
-        })
       }
 
       window.fbAsyncInit = function () {
@@ -79,6 +72,10 @@ export default {
           cookie     : true, // Enable cookies to allow the server to access the session.
           xfbml      : true, // Parse social plugins on this webpage.
           version    : 'v13.0' // Use this Graph API version for this call.
+        })
+
+        window.FB.Event.subscribe('auth.statusChange', function (res) {
+          console.log(res)
         })
 
         window.FB.getLoginStatus(function (response) { // Called after the JS SDK has been initialized.
@@ -90,12 +87,10 @@ export default {
         console.log('Welcome!  Fetching your information.... ')
         window.FB.api('/me', function (response) {
           console.log('Successful login for: ' + response.name)
-          document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.name + '!'
         })
       }
 
-      await loadJS({
+      await loadScript({
         src: 'https://connect.facebook.net/en_US/sdk.js',
         async: true,
         defer: true,
