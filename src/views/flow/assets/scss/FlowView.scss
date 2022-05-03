@@ -1,0 +1,45 @@
+.flow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, max-content));
+  grid-template-rows: auto;
+  gap: 30px;
+
+  .flow__item {
+    .flow__item--title {
+      color: theme("colors.gray.400");
+      text-align: center;
+      font-weight: 400;
+      font-size: theme("fontSize.base");
+      font-family: Quicksand;
+      @apply tracking-wide;
+    }
+  }
+
+  .icon-container {
+    @apply mx-auto;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 50px;
+
+    @include breakpoint_sm {
+      height: 50px;
+      width: 50px;
+    }
+
+    img {
+      height: 25px;
+      width: 25px;
+
+      @include breakpoint_sm {
+        height: 25px;
+        width: 25px;
+      }
+    }
+  }
+}

@@ -1,0 +1,78 @@
+.navigation {
+  height: 64px;
+  width: 100%;
+  background-color: theme("colors.neutral.800");
+  z-index: 2;
+  transition: background-color 500ms ease;
+  position: relative;
+
+  .navigation__hamburger {
+    position: absolute;
+    left: 30px;
+    z-index: 4;
+    cursor: pointer;
+
+    @include breakpoint_md {
+      display: none;
+    }
+  }
+
+  .navigation__container {
+    @apply mx-auto;
+    max-width: min(90%, 1240px);
+    height: inherit;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .navigation__logo {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    color: theme("colors.neutral.200");
+    font-family: "Permanent Marker";
+    font-size: theme("fontSize.3xl");
+    letter-spacing: theme("letterSpacing.wide");
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+    @include breakpoint_md {
+      position: static;
+      justify-content: flex-start;
+    }
+  }
+
+  .navigation__item {
+    &.navigation__item--tabs {
+      ul {
+        display: flex;
+
+        li {
+          transition: margin-right 300ms ease;
+          &:not(:last-child) {
+            margin-right: 10px;
+
+            @include breakpoint_md {
+              margin-right: 20px;
+            }
+          }
+        }
+
+        .link {
+          font-size: theme("fontSize.sm");
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          transition: 100ms ease-in-out;
+          transition-property: font-size;
+
+          @include breakpoint_lg {
+            font-size: theme("fontSize.base");
+          }
+        }
+      }
+    }
+  }
+}

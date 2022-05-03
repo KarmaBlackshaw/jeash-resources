@@ -1,0 +1,45 @@
+.testimonials {
+  .testimonial-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .testimonial-card__body {
+      color: theme("colors.gray.50");
+      margin-bottom: 30px;
+      font-family: Quicksand;
+      font-style: italic;
+    }
+
+    .testimonial-card__footer {
+      margin-top: auto;
+      .user-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .user-container__name {
+          font-size: theme("fontSize.xl");
+          font-weight: 700;
+          font-family: Quicksand;
+          color: theme("colors.gray.50");
+          @apply tracking-wide;
+        }
+
+        .user-container__position {
+          font-size: theme("fontSize.base");
+          color: theme("colors.gray.500");
+          text-transform: uppercase;
+        }
+
+        .user-container__icon {
+          img {
+            height: 40px;
+            width: auto;
+          }
+        }
+      }
+    }
+  }
+}
